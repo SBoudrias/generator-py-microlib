@@ -22,11 +22,7 @@ variable-rgx=[a-z_][a-z0-9_]{0,30}$
 max-line-length=131
 
 [TYPECHECK]
-ignored-classes=pytest,RFC3986
-ignored-classes=RFC3986
-
-
-ignored-classes=pytest
+ignored-classes=<%=props['pylint.ignored-classes'].join(',')%>
 
 [DESIGN]
 min-public-methods=0
