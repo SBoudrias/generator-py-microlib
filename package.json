@@ -14,7 +14,7 @@
     "node": ">=0.10.0"
   },
   "scripts": {
-    "install": "virtualenv venv && source venv/bin/activate && pip install -r requirements.txt",
+    "install": "pip install -r requirements.txt",
     "test": "mocha test/**.js"
   },
   "keywords": [

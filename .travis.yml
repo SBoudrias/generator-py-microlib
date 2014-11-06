@@ -2,5 +2,6 @@ language: node_js
 node_js:
   - '0.10'
 install:
-  - sudo pip install -r requirements.txt
-  - npm install
+  - sudo apt-get install python-virtualenv
+  - virtualenv venv
+  - source venv/bin/activate
