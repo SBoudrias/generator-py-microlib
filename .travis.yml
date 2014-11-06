@@ -1,7 +1,6 @@
 language: node_js
 node_js:
   - '0.10'
-before_install:
-  - currentfolder=${PWD##*/}
-  - if [ "$currentfolder" != 'generator-py-microlib' ]; then cd .. && eval "mv $currentfolder generator-py-microlib" && cd generator-py-microlib; fi
-
+install:
+  - sudo pip install -r requirements.txt
+  - npm install
