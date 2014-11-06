@@ -4,11 +4,11 @@
   "description": "Yeoman generator",
   "license": "MIT",
   "main": "app/index.js",
-  "repository": "bukzor/generator-py-microlib",
+  "repository": "SBoudrias/generator-py-microlib",
   "author": {
     "name": "Buck Golemon",
     "email": "buck@yelp.com",
-    "url": "https://github.com/bukzor"
+    "url": "https://github.com/SBoudrias"
   },
   "engines": {
     "node": ">=0.10.0"

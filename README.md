@@ -1,4 +1,4 @@
-# generator-py-microlib [![Build Status](https://secure.travis-ci.org/bukzor/generator-py-microlib.png?branch=master)](https://travis-ci.org/bukzor/generator-py-microlib)
+# generator-py-microlib [![Build Status](https://secure.travis-ci.org/SBoudrias/generator-py-microlib.png?branch=master)](https://travis-ci.org/SBoudrias/generator-py-microlib)
 
 > [Yeoman](http://yeoman.io) generator
 
