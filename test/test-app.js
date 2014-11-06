@@ -7,7 +7,9 @@ var helpers = require('yeoman-generator').test;
 var fs = require('fs');
 var os = require('os');
 var childProcess = require('child_process');
+var rimraf =  require('rimraf');
 
+var testRoot = path.join(os.tmpdir(), './temp-test');
 var fixtureFile = function(name) {
     fs.writeFileSync(name, fs.readFileSync(path.join(__dirname, 'fixtures', name)));
 };
@@ -15,8 +17,12 @@ var fixtureFile = function(name) {
 describe('py-microlib:app', function () {
   beforeEach(function () {
     this.run = helpers.run(path.join(__dirname, '../app'))
-      .inDir(path.join(os.tmpdir(), './temp-test'))
+      .inDir(testRoot)
       .withOptions({'skip-install': true});
+  });
+
+  afterEach(function (done) {
+    rimraf(testRoot, done);
   });
 
   describe('without ignored classes', function(){
@@ -31,8 +37,8 @@ describe('py-microlib:app', function () {
     it('doesn\'t ignore MyClass', function(done) {
       fixtureFile('demo.py');
       childProcess.execFile(
-        'pylint', 
-        ['demo.py'], 
+        'pylint',
+        ['demo.py'],
         function(error, stdout, stderr){
           assert.equal(error.code, 2);
           assert.equal(stderr, '');
@@ -58,8 +64,8 @@ describe('py-microlib:app', function () {
     it('doesn\'t ignore MyClass', function(done) {
       fixtureFile('demo.py');
       childProcess.execFile(
-        'pylint', 
-        ['demo.py'], 
+        'pylint',
+        ['demo.py'],
         function(error, stdout, stderr){
           assert.equal(error, null);
           assert.equal(stderr, '');

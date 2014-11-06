@@ -14,6 +14,7 @@
     "node": ">=0.10.0"
   },
   "scripts": {
+    "install": "virtualenv venv && source venv/bin/activate && pip install -r requirements.txt",
     "test": "mocha test/**.js"
   },
   "keywords": [
@@ -27,7 +28,7 @@
   },
   "devDependencies": {
     "mocha": "^2.0.1",
-    "shelljs": "^0.3.0"
+    "rimraf": "^2.2.8"
   },
   "peerDependencies": {
     "yo": ">=1.0.0"
