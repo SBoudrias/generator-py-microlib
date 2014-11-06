@@ -1,4 +1,4 @@
-/*global describe, beforeEach, it*/
+/*global describe, before, it*/
 'use strict';
 
 var path = require('path');
@@ -12,17 +12,14 @@ describe('py-microlib:app', function () {
       .inDir(path.join(os.tmpdir(), './temp-test'))
       .withOptions({ 'skip-install': true })
       .withPrompt({
-        someOption: true
+        'pylint.ignored-classes': []
       })
       .on('end', done);
   });
 
   it('creates files', function () {
     assert.file([
-      'bower.json',
-      'package.json',
-      '.editorconfig',
-      '.jshintrc'
+      'pylintrc'
     ]);
   });
 });
