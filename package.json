@@ -16,14 +16,11 @@
   "scripts": {
     "test": "mocha"
   },
-  "files": [
-    "app"
-  ],
   "keywords": [
     "yeoman-generator"
   ],
   "dependencies": {
-    "yeoman-generator": "^0.17.0",
+    "yeoman-generator": "yeoman/generator",
     "chalk": "^0.5.0",
     "yosay": "^0.3.0"
   },
