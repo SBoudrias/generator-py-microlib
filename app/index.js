@@ -18,10 +18,14 @@ var PyMicrolibGenerator = yeoman.generators.Base.extend({
       'Welcome to the sensational PyMicrolib generator!'
     ));
 
+    var key = 'pylint.ignored-classes';
     var prompts = [{
-      name: 'pylint.ignored-classes',
+      name: key,
       message: 'Which of your classes should pylint ignore?',
       filter: appendList(['pytest']),
+      when: function(){
+        return this.config.get(key) == null;
+      }.bind(this)
     }];
 
     this.prompt(prompts, function (props) {
@@ -31,12 +35,17 @@ var PyMicrolibGenerator = yeoman.generators.Base.extend({
     }.bind(this));
   },
 
+  configuring: function() {
+    // http://yeoman.io/authoring/storage.html
+    this.config.set(this.props);
+  },
+
   writing: {
     pylint: function() {
       this.template(
         'pylintrc',
         'pylintrc',
-        { props: this.props }
+        { props: this.config.getAll() }
       );
     }
   },
