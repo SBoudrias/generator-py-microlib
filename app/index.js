@@ -42,11 +42,11 @@ var PyMicrolibGenerator = yeoman.generators.Base.extend({
 
   writing: {
     pylint: function() {
-      this.template(
-        'pylintrc',
-        'pylintrc',
+      this.fs.copyTpl(
+        this.templatePath('pylintrc'),
+        this.destinationPath('pylintrc'),
         { props: this.config.getAll() }
-      );
+      )
     }
   },
 });
