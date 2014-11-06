@@ -23,13 +23,10 @@
   "dependencies": {
     "chalk": "^0.5.0",
     "lodash": "^2.4.1",
-    "yeoman-generator": "^0.18.0",
+    "yeoman-generator": "^0.18.0-pre.0",
     "yosay": "^0.3.0"
   },
   "devDependencies": {
     "mocha": "^2.0.1"
-  },
-  "peerDependencies": {
-    "yo": ">=1.0.0"
   }
 }
