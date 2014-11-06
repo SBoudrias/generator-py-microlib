@@ -7,7 +7,6 @@ var helpers = require('yeoman-generator').test;
 var fs = require('fs');
 var os = require('os');
 var childProcess = require('child_process');
-var rimraf =  require('rimraf');
 
 var testRoot = path.join(os.tmpdir(), './temp-test');
 var fixtureFile = function(name) {
@@ -19,10 +18,6 @@ describe('py-microlib:app', function () {
     this.run = helpers.run(path.join(__dirname, '../app'))
       .inDir(testRoot)
       .withOptions({'skip-install': true});
-  });
-
-  afterEach(function (done) {
-    rimraf(testRoot, done);
   });
 
   describe('without ignored classes', function(){
