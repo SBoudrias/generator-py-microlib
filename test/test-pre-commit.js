@@ -9,14 +9,14 @@ var os = require('os');
 
 var testRoot = path.join(os.tmpdir(), './temp-test');
 
-describe('py-microlib:git', function () {
+describe('py-microlib:pre-commit', function () {
   beforeEach(function (done) {
-    this.run = helpers.run(path.join(__dirname, '../git'))
+    this.run = helpers.run(path.join(__dirname, '../pre-commit'))
       .inDir(testRoot)
       .on('end', done);
   });
 
   it('creates git configs', function () {
-    assert.file(['.gitignore', '.gitattributes', '.editorconfig']);
+    assert.file(['.pre-commit-config.yaml']);
   });
 });

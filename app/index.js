@@ -35,6 +35,7 @@ module.exports = generators.Base.extend({
       'git',
       'license',
       'pip',
+      'pre-commit',
       'Makefile'
     ].forEach(function (gen) {
       this.composeWith('py-microlib:' + gen, {}, {
