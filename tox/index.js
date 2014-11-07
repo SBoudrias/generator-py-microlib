@@ -10,7 +10,10 @@ module.exports = generators.Base.extend({
     var prompts = [{
       name: 'projectName',
       message: 'What\'s your project name',
-      default: this.appname
+      default: this.appname,
+      when: function () {
+        return this.config.get('projectName') == null;
+      }.bind(this)
     }, {
       type: 'checkbox',
       name: 'py-versions',
@@ -27,7 +30,7 @@ module.exports = generators.Base.extend({
         return answer.length > 0 ? true : 'We need at least one version'
       },
       when: function () {
-        return this.config.get('py-version') == null;
+        return this.config.get('py-versions') == null;
       }.bind(this)
     }, {
       type: 'input',
