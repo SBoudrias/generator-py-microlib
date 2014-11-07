@@ -29,7 +29,6 @@ module.exports = generators.Base.extend({
 
   subgenerators: function () {
     [
-      'tox',
       'pylint',
       'coverage',
       'git',
@@ -42,5 +41,10 @@ module.exports = generators.Base.extend({
         local: path.join(__dirname, '..', gen, 'index.js')
       })
     }, this);
+    this.composeWith('py-microlib:tox', {
+      options: { projectName: this.config.get('projectName') }
+    }, {
+      local: path.join(__dirname, '../tox/index.js')
+    });
   },
 });

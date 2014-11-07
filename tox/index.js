@@ -2,6 +2,14 @@
 var generators = require('yeoman-generator');
 
 module.exports = generators.Base.extend({
+  constructor: function () {
+    generators.Base.apply(this, arguments);
+    this.option('projectName', {
+      type: String,
+      desc: 'project name'
+    });
+  },
+
   prompting: function () {
     var done = this.async();
 
@@ -49,7 +57,10 @@ module.exports = generators.Base.extend({
     this.fs.copyTpl(
       this.templatePath('tox.ini'),
       this.destinationPath('tox.ini'),
-      { props: this.config.getAll() }
+      {
+        projectName: this.options.projectName,
+        props: this.config.getAll()
+      }
     );
 
     this.fs.copyTpl(

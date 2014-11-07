@@ -15,13 +15,10 @@ describe('py-microlib:tox', function () {
     this.versions = ['py26', 'py33'];
     this.run = helpers.run(path.join(__dirname, '../tox'))
       .inDir(testRoot)
-      .withOptions({'skip-install': true})
+      .withOptions({'skip-install': true, 'projectName': 'foo'})
       .withPrompts({
         'py-versions': this.versions,
         'coverage-acceptance': 45
-      })
-      .on('ready', function(generator) {
-        generator.config.set({ projectName: 'foo' });
       })
       .on('end', done);
   });
