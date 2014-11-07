@@ -1,0 +1,5 @@
+language: python
+env: # These should match the tox env list
+<%= env %>
+install: pip install tox --use-mirrors
+script: tox
