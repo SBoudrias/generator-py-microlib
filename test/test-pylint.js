@@ -10,12 +10,12 @@ var childProcess = require('child_process');
 
 var testRoot = path.join(os.tmpdir(), './temp-test');
 var fixtureFile = function(name) {
-    fs.writeFileSync(name, fs.readFileSync(path.join(__dirname, 'fixtures', name)));
+  fs.writeFileSync(name, fs.readFileSync(path.join(__dirname, 'fixtures', name)));
 };
 
-describe('py-microlib:app', function () {
+describe('py-microlib:pylint', function () {
   beforeEach(function () {
-    this.run = helpers.run(path.join(__dirname, '../app'))
+    this.run = helpers.run(path.join(__dirname, '../pylint'))
       .inDir(testRoot)
       .withOptions({'skip-install': true});
   });
