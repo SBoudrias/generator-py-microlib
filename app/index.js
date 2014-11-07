@@ -13,6 +13,14 @@ module.exports = generators.Base.extend({
         local: path.join(__dirname, '../pylint/index.js'),
         link: 'strong'
       });
+      this.composeWith('py-microlib:git', {}, {
+        local: path.join(__dirname, '../git/index.js'),
+        link: 'strong'
+      });
+      this.composeWith('py-microlib:coverage', {}, {
+        local: path.join(__dirname, '../coverage/index.js'),
+        link: 'strong'
+      });
   },
 
   prompting: function () {
