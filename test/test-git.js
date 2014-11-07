@@ -17,6 +17,6 @@ describe('py-microlib:pylint', function () {
   });
 
   it('creates git configs', function () {
-    assert.file(['.gitignore', '.gitattributes']);
+    assert.file(['.gitignore', '.gitattributes', '.editorconfig']);
   });
 });

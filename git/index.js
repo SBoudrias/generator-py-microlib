@@ -5,5 +5,6 @@ module.exports = generators.Base.extend({
   writing: function () {
     this.fs.copy(this.templatePath('.gitignore'), this.destinationPath('.gitignore'));
     this.fs.copy(this.templatePath('.gitattributes'), this.destinationPath('.gitattributes'));
+    this.fs.copy(this.templatePath('.editorconfig'), this.destinationPath('.editorconfig'));
   }
 });
