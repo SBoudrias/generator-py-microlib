@@ -1,20 +1,11 @@
 'use strict';
 var generators = require('yeoman-generator');
-var yosay = require('yosay');
-var _ = require('lodash');
 
 module.exports = generators.Base.extend({
   prompting: function () {
     var done = this.async();
 
     var prompts = [{
-      name: 'projectName',
-      message: 'What\'s your project name',
-      default: this.appname,
-      when: function () {
-        return this.config.get('projectName') == null;
-      }.bind(this)
-    }, {
       type: 'checkbox',
       name: 'py-versions',
       message: 'Which versions of python should we use?',
@@ -27,7 +18,7 @@ module.exports = generators.Base.extend({
         { value: 'pypy3' }
       ],
       validate: function (answer) {
-        return answer.length > 0 ? true : 'We need at least one version'
+        return answer.length > 0 ? true : 'We need at least one version';
       },
       when: function () {
         return this.config.get('py-versions') == null;
@@ -39,7 +30,7 @@ module.exports = generators.Base.extend({
       default: 100,
       validate: function (value) {
         var valid = !isNaN(parseFloat(value));
-        return valid || "Please enter a number";
+        return valid || 'Please enter a number';
       },
       filter: Number,
       when: function () {

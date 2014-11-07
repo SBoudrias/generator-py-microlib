@@ -17,9 +17,11 @@ describe('py-microlib:tox', function () {
       .inDir(testRoot)
       .withOptions({'skip-install': true})
       .withPrompts({
-        projectName: 'foo',
         'py-versions': this.versions,
         'coverage-acceptance': 45
+      })
+      .on('ready', function(generator) {
+        generator.config.set({ projectName: 'foo' });
       })
       .on('end', done);
   });
