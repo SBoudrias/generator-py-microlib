@@ -95,9 +95,7 @@ describe('py-microlib:pylint', function () {
         ['demo.py'],
         function(error, stdout, stderr){
           assert.equal(stderr, '');
-          if (stdout.indexOf('Class \'MyClass\' has no \'x\' member') >= 0) {
-            throw Error(stdout);
-          }
+          assert.equal(stdout, '');
           assert.equal(error, null);
           done();
         }

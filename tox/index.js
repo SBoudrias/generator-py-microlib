@@ -48,30 +48,24 @@ module.exports = generators.Base.extend({
     }];
 
     this.prompt(prompts, function (props) {
-      this.props = props;
+      // http://yeoman.io/authoring/storage.html
+      this.config.set(props);
       done();
     }.bind(this));
-  },
-
-  configuring: function () {
-    // http://yeoman.io/authoring/storage.html
-    this.config.set(this.props);
   },
 
   writing: function () {
     this.fs.copyTpl(
       this.templatePath('tox.ini'),
       this.destinationPath('tox.ini'),
-      {
-        props: this.config.getAll()
-      }
+      { props: this.config.getAll() }
     );
 
     this.fs.copyTpl(
       this.templatePath('.travis.yml'),
       this.destinationPath('.travis.yml'),
       {
-        env: this.props['py-versions'].map(function (version) {
+        env: this.config.get('py-versions').map(function (version) {
           return '    - TOXENV=' + version + '\n';
         }).join('')
       }

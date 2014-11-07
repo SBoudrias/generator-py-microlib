@@ -23,6 +23,10 @@ module.exports = generators.Base.extend({
     this.composeWith('py-microlib:license', {}, {
       local: path.join(__dirname, '../license/index.js'),
     });
+    this.composeWith('py-microlib:Makefile', {}, {
+      local: path.join(__dirname, '../Makefile/index.js'),
+      link: 'strong'
+    });
   },
 
   prompting: function () {

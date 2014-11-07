@@ -9,7 +9,6 @@ var pylint = {
 
 
 var handleDefaults = function(props, defaults) {
-  defaults = defaults || pylint;
   _.each(props, function (val, key) {
     val = val || '';
     val = val.split(',');
@@ -33,32 +32,32 @@ module.exports = generators.Base.extend(
   {
     prompting: function () {
       var done = this.async();
+      this.config.defaults({ pylint: {} });
 
       var prompts = [
         {
           name: 'ignoredClasses',
           message: 'Which of your classes should pylint ignore?',
-          when: this.config.get('ignoredClasses') == null,
+          when: function() {
+            return this.config.get('pylint').ignoredClasses == null;
+          }.bind(this)
         },
         {
           name: 'disabled',
           message: 'Are there any pylint rules you need to disable?',
-          when: this.config.get('disabled') == null,
+          when: function() {
+            return this.config.get('pylint').disabled == null;
+          }.bind(this)
         },
       ];
 
       this.prompt(prompts, function (props) {
-
-        this.props = {
-          pylint: handleDefaults(props)
-        };
+        // http://yeoman.io/authoring/storage.html
+        this.config.set({
+          pylint: handleDefaults(props, pylint)
+        });
         done();
       }.bind(this));
-    },
-
-    configuring: function() {
-      // http://yeoman.io/authoring/storage.html
-      this.config.set(this.props);
     },
 
     writing: function() {
